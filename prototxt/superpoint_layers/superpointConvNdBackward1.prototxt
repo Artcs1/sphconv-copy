@@ -1,0 +1,28 @@
+name: "pytorch"
+input: "data"
+input_dim: 1
+input_dim: 1
+input_dim: 3
+input_dim: 3
+
+layer {
+    name: "ConvNdBackward1"
+    type: "Convolution"
+    bottom: "data"
+    top: "ConvNdBackward1"
+    convolution_param {
+        num_output: 64
+        pad_h: 0
+        pad_w: 0
+        kernel_h: 3
+        kernel_w: 3
+        stride: 1
+        dilation: 1
+    }
+}
+layer {
+    name: "ThresholdBackward2"
+    type: "ReLU"
+    bottom: "ConvNdBackward1"
+    top: "ConvNdBackward1"
+}
